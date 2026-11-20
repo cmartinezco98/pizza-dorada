@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { cn } from '@/shared/lib/cn';
 
 const links = [
@@ -74,10 +75,20 @@ export function SiteNav() {
         </svg>
       </button>
 
+      {open &&
+        createPortal(
+          <div
+            aria-hidden="true"
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 z-40 animate-fade-in bg-inverse-surface/60 backdrop-blur-sm lg:hidden"
+          />,
+          document.body,
+        )}
+
       {open && (
         <div
           id="mobile-nav"
-          className="absolute inset-x-0 top-16 border-b border-outline-variant/60 bg-surface p-margin shadow-e2 lg:hidden"
+          className="absolute inset-x-0 top-16 z-50 border-b border-outline-variant/60 bg-surface p-margin shadow-e2 lg:hidden"
         >
           <nav aria-label="Navegación móvil" className="flex flex-col">
             {links.map((link) => (

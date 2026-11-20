@@ -33,6 +33,8 @@ export function SpecialtyCard({ pizza, orderHref }: SpecialtyCardProps) {
           <span className="type-label-sm text-tertiary">{pizza.note}</span>
           <a
             href={orderHref}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={`Pedir ${pizza.name}`}
             className="inline-flex min-h-11 items-center rounded-control bg-primary-container px-md type-label-lg text-on-primary shadow-cta transition-transform duration-150 hover:-translate-y-0.5"
           >

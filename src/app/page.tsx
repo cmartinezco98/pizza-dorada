@@ -118,6 +118,8 @@ export default function HomePage() {
               <div className="flex flex-col gap-sm sm:flex-row">
                 <a
                   href={orderHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex min-h-11 items-center justify-center rounded-control bg-primary-container px-lg py-md type-label-lg text-on-primary shadow-cta transition-transform duration-150 hover:-translate-y-0.5"
                 >
                   Pedir a Domicilio Ahora
