@@ -1,0 +1,356 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Pizza Dorada — Design Tokens (CSS)
+   Espejo de src/shared/design-system/tokens.ts. Mantener ambos en sync.
+   Tailwind v4: los tokens del bloque @theme generan utilidades.
+   ========================================================================== */
+
+@theme {
+  /* --------------------------- Colores (roles M3) -------------------------- */
+  --color-primary: #8f000d;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #b22222;
+  --color-on-primary-container: #ffc8c2;
+  --color-primary-fixed: #ffdad6;
+  --color-primary-fixed-dim: #ffb4ac;
+  --color-on-primary-fixed: #410003;
+  --color-on-primary-fixed-variant: #92030f;
+  --color-inverse-primary: #ffb4ac;
+
+  --color-secondary: #735c00;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #fed65b;
+  --color-on-secondary-container: #745c00;
+  --color-secondary-fixed: #ffe088;
+  --color-secondary-fixed-dim: #e9c349;
+  --color-on-secondary-fixed: #241a00;
+  --color-on-secondary-fixed-variant: #574500;
+
+  --color-tertiary: #3d4a00;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #546216;
+  --color-on-tertiary-container: #ccdd84;
+  --color-tertiary-fixed: #daeb90;
+  --color-tertiary-fixed-dim: #becf77;
+  --color-on-tertiary-fixed: #181e00;
+  --color-on-tertiary-fixed-variant: #3f4c00;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  --color-background: #fff8f6;
+  --color-on-background: #2b1611;
+  --color-surface: #fff8f6;
+  --color-on-surface: #2b1611;
+  --color-on-surface-variant: #5a403e;
+  --color-surface-dim: #f9d1c8;
+  --color-surface-bright: #fff8f6;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fff0ed;
+  --color-surface-container: #ffe9e4;
+  --color-surface-container-high: #ffe2db;
+  --color-surface-container-highest: #ffdad2;
+  --color-surface-variant: #ffdad2;
+  --color-surface-tint: #b52424;
+  --color-inverse-surface: #432a25;
+  --color-inverse-on-surface: #ffede9;
+
+  --color-outline: #8e706d;
+  --color-outline-variant: #e2beba;
+
+  /* Paleta de marca */
+  --color-brand-rosso: #b22222;
+  --color-brand-oro: #d4af37;
+  --color-brand-oliva: #5d6b1f;
+  --color-brand-cafe: #4e342e;
+  --color-brand-crema: #fdfbf7;
+  --color-brand-crema-oscura: #f5e9c6;
+
+  /* --------------------------- Tipografía -------------------------------- */
+  /* --font-playfair y --font-jakarta las inyecta next/font en <html>. */
+  --font-display: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  /* --------------------------- Espaciado (8pt) --------------------------- */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2.5rem;
+  --spacing-2xl: 4rem;
+  --spacing-gutter: 1rem;
+  --spacing-gutter-desktop: 1.5rem;
+  --spacing-margin: 1rem;
+  --spacing-margin-tablet: 2rem;
+  --spacing-margin-desktop: 3rem;
+
+  /* --------------------------- Radios ------------------------------------ */
+  --radius-chip: 0.25rem;
+  --radius-control: 0.5rem;
+  --radius-card: 0.75rem;
+  --radius-panel: 1rem;
+  --radius-modal: 1.5rem;
+
+  /* --------------------------- Elevación --------------------------------- */
+  --shadow-e1: 0 2px 8px -2px rgba(78, 52, 46, 0.08);
+  --shadow-e2: 0 6px 16px -4px rgba(78, 52, 46, 0.12);
+  --shadow-e3: 0 12px 32px -6px rgba(78, 52, 46, 0.2);
+  --shadow-cta: 0 4px 12px rgba(178, 34, 34, 0.3);
+  --shadow-gold-inset: inset 0 0 0 1px #d4af37;
+  --shadow-gold-focus: 0 0 0 3px rgba(212, 175, 55, 0.3);
+  --shadow-fab-hover:
+    0 0 0 6px rgba(212, 175, 55, 0.25), 0 0 28px 10px rgba(212, 175, 55, 0.55);
+  --shadow-dark: 0 6px 16px -4px rgba(0, 0, 0, 0.45);
+
+  /* --------------------------- Layout ------------------------------------ */
+  --container-page: 1280px;
+  --container-content: 42rem;
+
+  /* --------------------------- Movimiento -------------------------------- */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* --------------------------- Animaciones ------------------------------- */
+  --animate-toast-in: toast-in 200ms cubic-bezier(0, 0, 0.2, 1);
+  --animate-fab: fab-float 3.2s ease-in-out infinite, fab-glow 6s ease-in-out infinite;
+  --animate-fire-glow: fire-glow 1.2s ease-in-out infinite;
+}
+
+@keyframes flame-flicker {
+  0%,
+  100% {
+    transform: scaleY(1) translateY(0);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scaleY(1.18) translateY(-1px);
+    opacity: 0.75;
+  }
+}
+
+@keyframes fire-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 12px 2px rgba(255, 138, 31, 0.28),
+      0 0 28px 10px rgba(255, 138, 31, 0.18);
+  }
+  50% {
+    box-shadow:
+      0 0 22px 6px rgba(255, 159, 28, 0.32),
+      0 0 46px 20px rgba(255, 159, 28, 0.38),
+      0 0 80px 40px rgba(255, 159, 28, 0.16);
+  }
+}
+
+@utility animate-flame {
+  animation: flame-flicker 0.9s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+@keyframes fab-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes fab-glow {
+  0%,
+  68%,
+  100% {
+    box-shadow: 0 4px 12px rgba(178, 34, 34, 0.3);
+  }
+  78%,
+  88% {
+    box-shadow:
+      0 0 0 6px rgba(212, 175, 55, 0.18),
+      0 6px 26px rgba(212, 175, 55, 0.5);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Utilidades tipográficas
+   Cada utilidad fija familia + tamaño + peso + interlineado + tracking.
+   Uso: <h1 class="type-display-lg-mobile md:type-display-lg">…</h1>
+   ========================================================================== */
+
+@utility type-display-lg {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Titular del hero: escala con la altura del viewport para no desbordar el banner. */
+@utility type-hero {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 6svh, 3rem);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+@utility type-display-lg-mobile {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@utility type-headline-lg {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+}
+
+@utility type-headline-lg-mobile {
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 600;
+}
+
+@utility type-headline-md {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+@utility type-headline-sm {
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+@utility type-title-lg {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+@utility type-title-md {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+@utility type-body-lg {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+@utility type-body-md {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+@utility type-body-sm {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+@utility type-label-lg {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+@utility type-label-md {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+@utility type-label-sm {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compensa el header fijo de 4rem al saltar a un anchor. */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overscroll-behavior-y: none;
+  }
+
+  ::selection {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-fixed);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    /* Halo claro para que el indicador se vea también sobre superficies oscuras. */
+    box-shadow: 0 0 0 4px var(--color-surface);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
