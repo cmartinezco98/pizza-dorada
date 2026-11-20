@@ -34,10 +34,19 @@ export function FloatingOrderButton({ orderHref, menuHref, menuLabel }: Floating
   }, [open]);
 
   return (
-    <div
-      ref={containerRef}
-      className="fixed bottom-md right-md z-50 flex flex-col items-end gap-sm"
-    >
+    <>
+      {open && (
+        <div
+          aria-hidden="true"
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-40 animate-fade-in bg-inverse-surface/60 backdrop-blur-sm"
+        />
+      )}
+
+      <div
+        ref={containerRef}
+        className="fixed bottom-md right-md z-50 flex flex-col items-end gap-sm"
+      >
       {open && (
         <div
           id="floating-order-menu"
@@ -191,6 +200,7 @@ export function FloatingOrderButton({ orderHref, menuHref, menuLabel }: Floating
           </span>
         </span>
       </button>
-    </div>
+      </div>
+    </>
   );
 }
